@@ -13,19 +13,19 @@ export function App() {
       <TwitterFollowCard
         formatUserName={formatUserName}
         userName="nach0gomez"
-        isFollowing={true}
+        // isFollowing={true}
       >Nacho Gómez</TwitterFollowCard>
 
       <TwitterFollowCard
         formatUserName={formatUserName}
         userName="kikobeats"
-        isFollowing={false}
+        // isFollowing={false}
       >kikobeats</TwitterFollowCard>
       
       <TwitterFollowCard
         formatUserName={formatUserName}
         userName="test2"
-        isFollowing
+        // isFollowing
       >test2</TwitterFollowCard>
     </section>
   );
