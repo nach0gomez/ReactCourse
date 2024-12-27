@@ -50,7 +50,8 @@ export function TwitterFollowCard( { formatUserName, userName, children } ) {
         <aside>
           {/* don't pass the func eval, just the func itself so it can eval it when needed */}
           <button className={buttonClassName}  onClick={handleClick}>
-            {buttonText}
+            <span className='tw-followCard-text'>{buttonText}</span>
+            <span className='tw-followCard-stopFollow'>Dejar de Seguir</span>
           </button>
         </aside>
       </article>
