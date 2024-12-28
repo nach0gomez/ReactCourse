@@ -4,20 +4,20 @@ import { useState } from 'react';
 // declarative code, not imperative (data and render flow control)
 
 // react props must not be modified
-export function TwitterFollowCard( { formatUserName, userName, children } ) {
+export function TwitterFollowCard( { formatUserName, userName, children, initialIsFollowing } ) {
     
     // can also use 'children' as a prop to render children elements
 
     // Prop types validation for the component
     TwitterFollowCard.propTypes = {
         userName: PropTypes.string.isRequired,
-        // isFollowing: PropTypes.bool,
+        initialIsFollowing: PropTypes.bool,
         formatUserName: PropTypes.func.isRequired,
         children: PropTypes.string,
     };
 
     // creating status to simulate the following status (default false)
-    const [isFollowing, setIsFollowing] = useState(false);
+    const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
     
     // function to handle the button click
     const handleClick = () => {
