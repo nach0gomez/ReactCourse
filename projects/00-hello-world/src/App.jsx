@@ -8,55 +8,46 @@ export function App() {
   // Could also use an element like <span> to format the username directly and send it to the component
   // since react renders elements. The components -> elements and react -> elements
 
-
   // Mocking API results
   const usersAPI = [
     {
       id: 1,
       userName: "nach0gomez",
       name: "Ignacio Gómez",
-      isFollowing: true
+      isFollowing: true,
     },
     {
       id: 2,
       userName: "kikobeats",
       name: "kikobeats",
-      isFollowing : false
+      isFollowing: false,
     },
     {
       id: 3,
       userName: "test",
       name: "Test",
-      isFollowing : false
+      isFollowing: false,
     },
-    
-
-  ]
+  ];
 
   return (
     <section className="tw-followCardContainer">
-      
-      {
-        usersAPI.map(user => {
-          
-          //* we could also destructure the object to use the properties directly
-          // const { id, userName, name, isFollowing } = user 
+      {usersAPI.map((user) => {
+        //* we could also destructure the object to use the properties directly
+        // const { id, userName, name, isFollowing } = user
 
-          return(
-            <TwitterFollowCard
-              key={user.id}
-              formatUserName={formatUserName}
-              initialIsFollowing={user.isFollowing}
-              userName={user.userName}
-            >
-              {user.name}
-            </TwitterFollowCard>
-          )
+        return (
+          <TwitterFollowCard
+            key={user.id}
+            formatUserName={formatUserName}
+            initialIsFollowing={user.isFollowing}
+            userName={user.userName}
+          >
+            {user.name}
+          </TwitterFollowCard>
+        );
+      })}
 
-        })
-      }
-
-      
       {/* <TwitterFollowCard
         formatUserName={formatUserName}
         userName="test2"
