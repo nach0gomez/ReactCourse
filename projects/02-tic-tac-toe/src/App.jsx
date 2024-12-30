@@ -18,6 +18,20 @@ const Square = ({ children, isSelected, updateBoard, index}) => {
   )
 } 
 
+const WINNER_COMBINATIONS = [
+  // horizontal
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  // vertical
+  [0,3,6],
+  [1,4,7],
+  [2,5,8],
+  // diagonal
+  [0,4,8],
+  [6,4,2],
+]
+
 function App() {
   // Initial board state
   const [board, setBoard] = useState(Array(9).fill(null))
@@ -26,18 +40,30 @@ function App() {
   // Winner State
   const [winner, setWinner] = useState(null)
 
+  const checkWinner = (currentBoard) => {
+    for(let i = 0; i<WINNER_COMBINATIONS.length; i++){
+      const first = currentBoard[WINNER_COMBINATIONS[i][0]]
+      const second = currentBoard[WINNER_COMBINATIONS[i][1]]
+      const third = currentBoard[WINNER_COMBINATIONS[i][2]]
+      if(first && first === second && second === third  ){
+        return first
+      }
+    }
+    return null
+  }
+
   const updateBoard = (index) => {
-    if(board[index]) return
-    
+    if(board[index] || winner) return
+  
     const newBoard = [...board]
     newBoard[index] = turn    
-    setBoard(newBoard)    
+    setBoard(newBoard)
+    setWinner((checkWinner(newBoard)));
 
     // Changing Turns between players
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
 
-    
 
   } 
 
@@ -58,6 +84,7 @@ function App() {
             )
           })
         }
+        {winner ? `The winner is: ${winner}` : ''}
       </section>
       <section className="turn">
         <Square isSelected={turn == TURNS.X}>{TURNS.X}</Square>
