@@ -40,18 +40,16 @@ function App() {
   // Winner State
   const [winner, setWinner] = useState(null)
 
-  const checkWinner = (currentBoard) => {
-    for(let i = 0; i<WINNER_COMBINATIONS.length; i++){
-      // array desconstructing
-      const [a, b, c] = WINNER_COMBINATIONS[i]
-      if(currentBoard[a] && 
-        currentBoard[a] === currentBoard[b] && 
-        currentBoard[a] === currentBoard[c]){
-        return currentBoard[a]
+  const checkWinner = (board) => {
+    // array deconstruting
+    for (const [a, b, c] of WINNER_COMBINATIONS) {
+      if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+        return board[a];
       }
     }
-    return null
-  }
+    return null;
+  };
+  
 
   const updateBoard = (index) => {
     if(board[index] || winner) return
@@ -66,7 +64,7 @@ function App() {
     setTurn(newTurn)
   } 
 
-  const winnerMessage = () => {
+  const renderWinnerMessage = () => {
     if(winner) return `The winner is:`
     if(!winner && !board.includes(null)) return 'We have a draw!'
     return null
@@ -96,16 +94,16 @@ function App() {
         <Square isSelected={turn == TURNS.O}>{TURNS.O}</Square>
       </section>
       {
-        winnerMessage()
+        renderWinnerMessage()
         && (<section className="winner">
             <div className="text">
               <h2>
                 {
-                  winnerMessage()
+                  renderWinnerMessage()
                 }
               </h2>
               <header className="win">
-                {winnerMessage() && <Square>{winner}</Square>}
+                {renderWinnerMessage() && <Square>{winner}</Square>}
               </header>
               <footer>
                 <button>
