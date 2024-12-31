@@ -42,11 +42,12 @@ function App() {
 
   const checkWinner = (currentBoard) => {
     for(let i = 0; i<WINNER_COMBINATIONS.length; i++){
-      const first = currentBoard[WINNER_COMBINATIONS[i][0]]
-      const second = currentBoard[WINNER_COMBINATIONS[i][1]]
-      const third = currentBoard[WINNER_COMBINATIONS[i][2]]
-      if(first && first === second && second === third  ){
-        return first
+      // array desconstructing
+      const [a, b, c] = WINNER_COMBINATIONS[i]
+      if(currentBoard[a] && 
+        currentBoard[a] === currentBoard[b] && 
+        currentBoard[a] === currentBoard[c]){
+        return currentBoard[a]
       }
     }
     return null
@@ -63,9 +64,14 @@ function App() {
     // Changing Turns between players
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X
     setTurn(newTurn)
-
-
   } 
+
+  const winnerMessage = () => {
+    if(winner) return `The winner is:`
+    if(!winner && !board.includes(null)) return 'We have a draw!'
+    return null
+  }
+
 
   return (
     <main className="board">
@@ -84,12 +90,33 @@ function App() {
             )
           })
         }
-        {winner ? `The winner is: ${winner}` : ''}
       </section>
       <section className="turn">
         <Square isSelected={turn == TURNS.X}>{TURNS.X}</Square>
         <Square isSelected={turn == TURNS.O}>{TURNS.O}</Square>
       </section>
+      {
+        winnerMessage()
+        && (<section className="winner">
+            <div className="text">
+              <h2>
+                {
+                  winnerMessage()
+                }
+              </h2>
+              <header className="win">
+                {winnerMessage() && <Square>{winner}</Square>}
+              </header>
+              <footer>
+                <button>
+                  Try Again
+                </button>
+              </footer>
+            </div>
+            </section>
+          )
+      }
+      
     </main>
   )
 }
