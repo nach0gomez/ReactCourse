@@ -1,25 +1,25 @@
-import { Square } from "./Square"
+import { Square } from './Square'
 
-export const WinnerModal = ({winner, resetGame}) => {
+export const WinnerModal = ({ winner, resetGame }) => {
+  if (!winner) return null
 
-    if(!winner) return null
-
-    const winnerText = winner === "draw" ? "We have a draw!" : 'The winner is:'
-    return (
-        <section className="winner">
-            <div className="text">
-                <h2>
-                    {winnerText}
-                </h2>
-                {winner !== "draw" && (
-                    <header className="win">
-                        {<Square>{winner}</Square>}
-                    </header>)
-                }
-                <footer>
-                    <button onClick={resetGame}>
-                        Try Again
-                    </button>
-                </footer>
-            </div>
-        </section>)}
+  const winnerText = winner === 'draw' ? 'We have a draw!' : 'The winner is:'
+  return (
+    <section className='winner'>
+      <div className='text'>
+        <h2>
+          {winnerText}
+        </h2>
+        {winner !== 'draw' && (
+          <header className='win'>
+            <Square>{winner}</Square>
+          </header>)}
+        <footer>
+          <button onClick={resetGame}>
+            Try Again
+          </button>
+        </footer>
+      </div>
+    </section>
+  )
+}
