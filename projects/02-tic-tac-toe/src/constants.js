@@ -1,7 +1,7 @@
 export const TURNS = {
   X: '✖',
   O: '◯'
-};
+}
 
 export const WINNER_COMBINATIONS = [
   // horizontal
@@ -14,5 +14,5 @@ export const WINNER_COMBINATIONS = [
   [2, 5, 8],
   // diagonal
   [0, 4, 8],
-  [6, 4, 2],
-];
+  [6, 4, 2]
+]
