@@ -3,7 +3,8 @@ import confetti from "canvas-confetti"
 
 import { Square } from "./components/Square";
 import { WinnerModal } from "./components/WinnerModal"
-import { TURNS,WINNER_COMBINATIONS } from "./constants";
+import { checkDraw, checkWinner } from "./logic/board";
+import { TURNS } from "./constants";
 
 
 function App() {
@@ -14,20 +15,13 @@ function App() {
   // Winner State
   const [winner, setWinner] = useState(null);
 
-  const checkWinner = (board) => {
-    for (const [a, b, c] of WINNER_COMBINATIONS) {
-      if (board[a] && board[a] === board[b] && board[a] === board[c]) {
-        return board[a];
-      }
-    }
-    return null;
+  const resetGame = () => {
+    setBoard(Array(9).fill(null));
+    setWinner(null);
+    setTurn(TURNS.X);
   };
 
-  const checkDraw = (board) => {
-    return board.every((square) => square !== null);
-  };
-
-  const updateBoard = (index) => {
+    const updateBoard = (index) => {
     if (board[index] || winner) return;
 
     const newBoard = [...board];
@@ -46,16 +40,10 @@ function App() {
     setTurn(newTurn);
   };
 
-  const resetGame = () => {
-    setBoard(Array(9).fill(null));
-    setWinner(null);
-    setTurn(TURNS.X);
-  };
-
   return (
     <main className="board">
       <h1>Tic Tac Toe</h1>
-      <button className="resetGame">Reset Game</button>
+      <button className="resetGame" onClick={resetGame}>Reset Game</button>
       <section className="game">
         {board.map((square, index) => (
           <Square
@@ -71,8 +59,7 @@ function App() {
         <Square isSelected={turn === TURNS.X}>{TURNS.X}</Square>
         <Square isSelected={turn === TURNS.O}>{TURNS.O}</Square>
       </section>
-      {winner && 
-      (<WinnerModal winner={winner} resetGame={resetGame}></WinnerModal>)}
+      <WinnerModal winner={winner} resetGame={resetGame}></WinnerModal>
     </main>
   );
 }

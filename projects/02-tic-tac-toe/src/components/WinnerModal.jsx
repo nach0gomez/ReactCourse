@@ -1,6 +1,9 @@
 import { Square } from "./Square"
 
 export const WinnerModal = ({winner, resetGame}) => {
+
+    if(!winner) return null
+
     const winnerText = winner === "draw" ? "We have a draw!" : 'The winner is:'
     return (
         <section className="winner">
