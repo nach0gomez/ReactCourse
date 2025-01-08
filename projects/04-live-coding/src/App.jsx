@@ -1,39 +1,20 @@
 import './App.css'
-
-import { useEffect, useState } from 'react'
-
-const FACTS_ENDPOINT = 'https://catfact.ninja/fact'
+import { useCatFact } from './hooks/useCatFact'
 
 export function App () {
-  const [catFact, setCatFact] = useState()
-  const [catImage, setCatImage] = useState()
-
-  useEffect(() => {
-    fetch(FACTS_ENDPOINT)
-      .then(res => res.json())
-      .then(data => {
-        setCatFact(data.fact)
-
-        const firstWord = data.fact.split(' ', 1)
-        fetch(`https://cataas.com/cat/says/${firstWord}?json=true`)
-          .then(res => res.json())
-          .then(catData => {
-            const url = `https://cataas.com/cat/${catData._id}/says/${firstWord}`
-            console.log(url)
-
-            setCatImage(url)
-          })
-          .catch(error => console.error('Error al obtener la imagen del gato:', error))
-      })
-      .catch(error => console.error('Error al obtener el facto del gato:', error))
-  }, [])
+  const { catFact, catImage, refreshCatData } = useCatFact()
 
   return (
     <main>
-      <h1>API de factos :o</h1>
-      {catFact && <p>{catFact}</p>}
-      <h2>API de gatos :3</h2>
-      {catImage && <img src={catImage} alt='imagen de gato' />}
+      <h1>Fact API :o</h1>
+      {catFact
+        ? <p>{catFact}</p>
+        : <p>Loading curious fact...</p>}
+      <h2>Cat API :3</h2>
+      {catImage
+        ? <img src={catImage} alt='cat image' />
+        : <p>Loading image...</p>}
+      <button onClick={refreshCatData}>Refresh Fact</button>
     </main>
   )
 }
