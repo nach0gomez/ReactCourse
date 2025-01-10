@@ -1,0 +1,76 @@
+{
+  "Search": [
+    {
+      "Title": "One Piece",
+      "Year": "1999–",
+      "imdbID": "tt0388629",
+      "Type": "series",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTNjNGU4NTUtYmVjMy00YjRiLTkxMWUtNzZkMDNiYjZhNmViXkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    {
+      "Title": "One Piece",
+      "Year": "2023–",
+      "imdbID": "tt11737520",
+      "Type": "series",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BYzhkM2QxYWMtYzFmMi00OGU2LTk0OTktNmU2MjYyNjExOWNkXkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    {
+      "Title": "One Piece Film: Red",
+      "Year": "2022",
+      "imdbID": "tt16183464",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNTdjY2YxYTQtNjIzYy00ZDczLThhNTUtNmY2ZWNkZjZiMTYzXkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    {
+      "Title": "One Piece Fan Letter",
+      "Year": "2024",
+      "imdbID": "tt33998607",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BM2E5ZTlkYzMtZjYwNy00ZDc4LWE5ZWUtMGNmZjgxMzZjMTJmXkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    {
+      "Title": "One Piece Film Z",
+      "Year": "2012",
+      "imdbID": "tt2375379",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BNjY3ODNiZjgtY2RmNS00MjAyLWIwMzUtNTE0ZWIxNDU3YThhXkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    {
+      "Title": "One Piece: The Movie",
+      "Year": "2000",
+      "imdbID": "tt0814243",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BOWNhMDU3NDQtYWViMC00M2Y4LTk4YTUtYjI2M2ZmN2Q5NDViXkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    {
+      "Title": "One Piece: Stampede",
+      "Year": "2019",
+      "imdbID": "tt9430698",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BY2FlYzRmZGMtM2Y5OC00NzFhLTgyNDAtZDk1YjdkZTlmMjE3XkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    {
+      "Title": "One Piece Film: Gold",
+      "Year": "2016",
+      "imdbID": "tt5251328",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BOWExOWRiMDMtMTY2My00MWI0LWIxMWItNmE1YTg0ZWM4YTZlXkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    {
+      "Title": "One Piece: Strong World",
+      "Year": "2009",
+      "imdbID": "tt1485763",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BMTA5MTM5YWQtNzE1Yi00OWUyLTk1MWItMWVkODM4ZGM5OWUzXkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    {
+      "Title": "Conversation Piece",
+      "Year": "1974",
+      "imdbID": "tt0071585",
+      "Type": "movie",
+      "Poster": "https://m.media-amazon.com/images/M/MV5BOTNiYjE0YmUtZjFmMy00YmNjLWEwYTItNDc1OTI0ZDQ5MmFlXkEyXkFqcGc@._V1_SX300.jpg"
+    }
+  ],
+  "totalResults": "600",
+  "Response": "True"
+}
