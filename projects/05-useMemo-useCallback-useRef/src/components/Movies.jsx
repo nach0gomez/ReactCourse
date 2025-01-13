@@ -8,7 +8,7 @@ export const Movies = ({ movies }) => {
         {movies.map(movie => {
           return (
             <article key={movie.id}>
-              <label>{movie.title}</label>
+              <label className='title'>{movie.title}</label>
               <label>{movie.year}</label>
               <img src={movie.poster} alt={movie.title} />
             </article>

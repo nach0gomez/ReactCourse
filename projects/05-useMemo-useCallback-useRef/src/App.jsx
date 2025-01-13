@@ -1,13 +1,11 @@
 import './App.css'
-// import mockResponse from './mocks/results.json'
-import mockNoResponse from './mocks/no-results.json'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
 import { useTitle } from './hooks/useTitle'
 
 function App () {
-  const { movies: mappedMovies } = useMovies()
   const { title, error, updateTitle } = useTitle()
+  const { movies: mappedMovies, getMovies } = useMovies({ title })
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -15,6 +13,7 @@ function App () {
       new window.FormData(event.target)
     )
     console.log(title)
+    getMovies()
   }
 
   const handleChange = (event) => {

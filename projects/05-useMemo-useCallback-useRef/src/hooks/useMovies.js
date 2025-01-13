@@ -1,6 +1,9 @@
+import { useState } from 'react'
 import mockResponse from '../mocks/results.json'
+import mockNoResponse from '../mocks/no-results.json'
 
-export function useMovies () {
+export function useMovies ({ title }) {
+  const [responseMovies, setResponseMovies] = useState([])
   const movies = mockResponse.Search
 
   const mappedMovies = movies?.map(movie => ({
@@ -10,5 +13,14 @@ export function useMovies () {
     poster: movie.Poster
   }))
 
-  return { movies: mappedMovies }
+  const getMovies = () => {
+    if (title) {
+      setResponseMovies(mockResponse)
+    } else {
+      setResponseMovies(mockNoResponse)
+    }
+    return responseMovies
+  }
+
+  return { movies: mappedMovies, getMovies }
 }
