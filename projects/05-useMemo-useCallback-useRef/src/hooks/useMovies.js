@@ -4,7 +4,7 @@ import mockNoResponse from '../mocks/no-results.json'
 
 export function useMovies ({ title }) {
   const [responseMovies, setResponseMovies] = useState([])
-  const movies = mockResponse.Search
+  const movies = responseMovies.Search
 
   const mappedMovies = movies?.map(movie => ({
     id: movie.imdbID,
@@ -19,7 +19,6 @@ export function useMovies ({ title }) {
     } else {
       setResponseMovies(mockNoResponse)
     }
-    return responseMovies
   }
 
   return { movies: mappedMovies, getMovies }

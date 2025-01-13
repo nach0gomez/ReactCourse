@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 export const Movies = ({ movies }) => {
-  const hasMovies = movies.length > 0
+  const hasMovies = movies?.length > 0
   return (hasMovies
     ? (
       <main>
