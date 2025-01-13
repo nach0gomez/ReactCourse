@@ -1,10 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 
 export function useTitle () {
   const [title, updateTitle] = useState('')
   const [error, setError] = useState('')
+  const isFirstInput = useRef(true)
 
   useEffect(() => {
+    if (isFirstInput.current) {
+      isFirstInput.current = title === ''
+      return
+    }
+
     if (title === '') {
       setError('Title can not be empty')
       return
