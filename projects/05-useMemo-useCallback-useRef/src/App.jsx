@@ -3,12 +3,11 @@ import './App.css'
 import mockNoResponse from './mocks/no-results.json'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
-import { useEffect, useState } from 'react'
+import { useTitle } from './hooks/useTitle'
 
 function App () {
   const { movies: mappedMovies } = useMovies()
-  const [title, setTitle] = useState('')
-  const [error, setError] = useState('')
+  const { title, error, updateTitle } = useTitle()
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -19,27 +18,8 @@ function App () {
   }
 
   const handleChange = (event) => {
-    setTitle(event.target.value)
+    updateTitle(event.target.value)
   }
-
-  useEffect(() => {
-    if (title === '') {
-      setError('Title can not be empty')
-      return
-    }
-
-    if (title.match(/^\d+$/)) {
-      setError('Title can not be a digit')
-      return
-    }
-
-    if (title.length < 3) {
-      setError('Title should be at least 3 characters long')
-      return
-    }
-
-    setError('')
-  }, [title])
 
   return (
     <div className='index'>
