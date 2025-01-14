@@ -5,7 +5,7 @@ import { useTitle } from './hooks/useTitle'
 
 function App () {
   const { title, error, updateTitle } = useTitle()
-  const { movies: mappedMovies, getMovies } = useMovies({ title })
+  const { movies: mappedMovies, getMovies, loading, fetchError } = useMovies({ title })
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -30,7 +30,9 @@ function App () {
           {error && (<p style={{ color: 'red' }}>{error}</p>)}
         </form>
       </header>
-      <Movies onChange={handleChange} value={title} movies={mappedMovies} handleSubmit={handleSubmit} />
+      {
+        loading ? <p>Loading...</p> : <Movies movies={mappedMovies} />
+      }
     </div>
   )
 }
