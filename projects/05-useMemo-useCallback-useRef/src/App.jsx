@@ -15,7 +15,7 @@ function App () {
       new window.FormData(event.target)
     )
     console.log(title)
-    getMovies()
+    getMovies({ title })
   }
 
   const handleChange = (event) => {
