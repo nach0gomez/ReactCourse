@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import mockResponse from '../mocks/results.json'
+// import mockResponse from '../mocks/results.json'
 import mockNoResponse from '../mocks/no-results.json'
 
 export function useMovies ({ title }) {
@@ -15,7 +15,10 @@ export function useMovies ({ title }) {
 
   const getMovies = () => {
     if (title) {
-      setResponseMovies(mockResponse)
+      // setResponseMovies(mockResponse)
+      fetch(`https://www.omdbapi.com/?apikey=4287ad07&s=${title}`)
+        .then(res => res.json())
+        .then(json => setResponseMovies(json))
     } else {
       setResponseMovies(mockNoResponse)
     }
