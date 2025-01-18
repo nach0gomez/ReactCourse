@@ -1,13 +1,18 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import './App.css'
 import { Movies } from './components/Movies'
 import { useMovies } from './hooks/useMovies'
 import { useTitle } from './hooks/useTitle'
 
+import debounce from 'just-debounce-it'
+
 function App () {
   const [sort, setSort] = useState(false)
   const { title, error, updateTitle } = useTitle()
   const { movies: mappedMovies, getMovies, loading } = useMovies({ title, sort })
+
+  const debouncedSearchMovies = useCallback(
+    debounce(title => getMovies({ title }), 300), [getMovies])
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -19,7 +24,9 @@ function App () {
   }
 
   const handleChange = (event) => {
+    const newTitle = event.target.value
     updateTitle(event.target.value)
+    debouncedSearchMovies(newTitle)
   }
 
   const handleSort = () => {
